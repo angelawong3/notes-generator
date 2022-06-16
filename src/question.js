@@ -86,3 +86,35 @@ const appointmentAttendeesQuestions = [
     // validate: () => {},
   },
 ];
+
+const listQuestions = [
+  {
+    type: "input",
+    message: "Please enter the title of the list:",
+    name: "title",
+    // validate: () => {},
+  },
+  {
+    type: "date",
+    name: "date",
+    message: "Please enter the due date for list completion:",
+    default: new Date(), // default to today's date
+    format: { month: "short" },
+    clearable: true,
+  },
+];
+
+const listItemQuestions = [
+  {
+    type: "input",
+    message: "Please enter the list item name:",
+    name: "listItem",
+    // validate: () => {},
+  },
+  {
+    type: "confirm",
+    message: "Would you like to add another list item?",
+    name: "addListItem",
+    // validate: () => {},
+  },
+];
