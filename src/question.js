@@ -118,3 +118,20 @@ const listItemQuestions = [
     // validate: () => {},
   },
 ];
+
+const reminderQuestions = [
+  {
+    type: "input",
+    message: "Please enter the title of the reminder:",
+    name: "title",
+    // validate: () => {},
+  },
+  {
+    type: "date",
+    name: "date",
+    message: "Please enter the due date for the reminder:",
+    default: new Date(), // default to today's date
+    format: { month: "short" },
+    clearable: true,
+  },
+];
