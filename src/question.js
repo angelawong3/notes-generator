@@ -1,3 +1,44 @@
+const noteTypeQuestion = [
+  {
+    type: "list",
+    message: "Please select the type of note to add:",
+    name: "type",
+    choices: [
+      {
+        name: "Bill",
+        value: "bill",
+        short: "Bill",
+      },
+      {
+        name: "Appointment",
+        value: "appointment",
+        short: "Appointment",
+      },
+      {
+        name: "List",
+        value: "list",
+        short: "List",
+      },
+      {
+        name: "Reminder",
+        value: "reminder",
+        short: "Reminder",
+      },
+    ],
+    // validate: () => {},
+  },
+];
+
+const addNewNoteQuestion = [
+  {
+    type: "confirm",
+    message: "Would you like to add another note?",
+    name: "addAnotherNote",
+    default: true,
+    // validate: () => {},
+  },
+];
+
 const billQuestions = [
   {
     type: "input",
@@ -20,7 +61,7 @@ const billQuestions = [
   {
     type: "date",
     name: "date",
-    message: "Please enter the due date:",
+    message: "Please enter the due date (use arrow keys): ",
     default: new Date(), // default to today's date
     format: { month: "short", hour: undefined, minute: undefined },
     clearable: true,
@@ -76,7 +117,7 @@ const appointmentAttendeesQuestions = [
   {
     type: "input",
     message: "Please enter the full name of attendee:",
-    name: "attendees",
+    name: "attendee",
     // validate: () => {},
   },
   {
@@ -135,3 +176,14 @@ const reminderQuestions = [
     clearable: true,
   },
 ];
+
+module.exports = {
+  noteTypeQuestion,
+  addNewNoteQuestion,
+  billQuestions,
+  appointmentQuestions,
+  appointmentAttendeesQuestions,
+  listQuestions,
+  listItemQuestions,
+  reminderQuestions,
+};
