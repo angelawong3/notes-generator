@@ -1,4 +1,8 @@
 const inquirer = require("inquirer");
+const Apppointment = require("./lib/appointment");
+const Bill = require("./lib/bill");
+const List = require("./lib/List");
+const Note = require("./lib/Note");
 
 const {
   noteTypeQuestion,
@@ -15,26 +19,26 @@ inquirer.registerPrompt("date", require("inquirer-date-prompt"));
 
 const init = async () => {
   let noteCreationInProgress = true;
+  const notes = [];
+
   while (noteCreationInProgress) {
     // get the type of note to add
     const { type } = await inquirer.prompt(noteTypeQuestion);
-
-    console.log(type);
 
     // if bill
     if (type === "bill") {
       // prompt bill question and get answer
       const billAnswers = await inquirer.prompt(billQuestions);
 
-      console.log(billAnswers);
+      const bill = new Bill(billAnswers);
+
+      notes.push(bill);
     }
 
     // if appointment
     if (type === "appointment") {
       // prompt appointment questions and get answers
       const appointmentAnswers = await inquirer.prompt(appointmentQuestions);
-
-      console.log(appointmentAnswers);
 
       let appointmentAttendeesInProgress = true;
       appointmentAnswers.attendees = [];
@@ -53,15 +57,15 @@ const init = async () => {
           appointmentAttendeesInProgress = false;
         }
       }
-      console.log(appointmentAnswers);
+      const appointment = new Apppointment(appointmentAnswers);
+
+      notes.push(appointment);
     }
 
     // if list
     if (type === "list") {
       // prompt list questions and get answers
       const listAnswers = await inquirer.prompt(listQuestions);
-
-      console.log(listAnswers);
 
       let listItemsInProgress = true;
       listAnswers.items = [];
@@ -80,7 +84,7 @@ const init = async () => {
           listItemsInProgress = false;
         }
       }
-      console.log(listAnswers);
+      const list = new List(listAnswers);
     }
 
     // if reminder
@@ -88,7 +92,9 @@ const init = async () => {
       // prompt reminder questions and get answers
       const reminderAnswers = await inquirer.prompt(reminderQuestions);
 
-      console.log(reminderAnswers);
+      const reminder = new Note(reminderAnswers);
+
+      notes.push(reminder);
     }
 
     const { addAnotherNote } = await inquirer.prompt(addNewNoteQuestion);
@@ -97,7 +103,7 @@ const init = async () => {
       noteCreationInProgress = false;
     }
   }
-  console.log("generate notes and HTML");
+
   // generate notes and HTML
 };
 
