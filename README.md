@@ -1,6 +1,6 @@
 # Notes Generator
 
-## This is the repository for the team profile generator
+## This is the repository for the notes generator
 
 ## Table of Contents
 
