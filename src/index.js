@@ -88,6 +88,8 @@ const init = async () => {
         }
       }
       const list = new List(listAnswers);
+
+      notes.push(list);
     }
 
     // if reminder
@@ -110,7 +112,7 @@ const init = async () => {
   const html = generateHTML(notes);
 
   // write html to file
-  fs.writeFileSync(path.join(__dirname, "../dist", "index.html"), html);
+  fs.writeFileSync(path.join(__dirname, "../dist", "gen-index.html"), html);
 
   console.log("DONE");
 };
