@@ -106,7 +106,7 @@ const appointmentQuestions = [
   {
     type: "date",
     name: "date",
-    message: "Please enter the appointment date:",
+    message: "Please enter the appointment date (use arrow keys):",
     default: new Date(), // default to today's date
     format: { month: "short" },
     clearable: true,
@@ -138,7 +138,7 @@ const listQuestions = [
   {
     type: "date",
     name: "date",
-    message: "Please enter the due date for list completion:",
+    message: "Please enter the due date for list completion (use arrow keys):",
     default: new Date(), // default to today's date
     format: { month: "short" },
     clearable: true,
@@ -170,7 +170,7 @@ const reminderQuestions = [
   {
     type: "date",
     name: "date",
-    message: "Please enter the due date for the reminder:",
+    message: "Please enter the due date for the reminder (use arrow keys):",
     default: new Date(), // default to today's date
     format: { month: "short" },
     clearable: true,

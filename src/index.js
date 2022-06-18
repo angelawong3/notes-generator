@@ -1,9 +1,12 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
+const path = require("path");
+
 const Apppointment = require("./lib/appointment");
 const Bill = require("./lib/bill");
 const List = require("./lib/List");
 const Note = require("./lib/Note");
-
+const generateHTML = require("./generator");
 const {
   noteTypeQuestion,
   addNewNoteQuestion,
@@ -103,8 +106,13 @@ const init = async () => {
       noteCreationInProgress = false;
     }
   }
+  // generate HTML
+  const html = generateHTML(notes);
 
-  // generate notes and HTML
+  // write html to file
+  fs.writeFileSync(path.join(__dirname, "../dist", "index.html"), html);
+
+  console.log("DONE");
 };
 
 init();
